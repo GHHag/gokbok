@@ -2,8 +2,9 @@ package main
 
 import (
 	"database/sql"
+	"email_service/data"
 	"encoding/gob"
-	"final_project/data"
+
 	"fmt"
 	"log"
 	"net/http"
@@ -164,7 +165,12 @@ func (app *Config) shutdown() {
 	// block until waitgroup is empty
 	app.Wait.Wait()
 
+	app.Mailer.DoneChan <- true
+
 	app.InfoLog.Println("closing channels and shutting down application...")
+	close(app.Mailer.MailerChan)
+	close(app.Mailer.ErrorChan)
+	close(app.Mailer.DoneChan)
 }
 
 func (app *Config) createMail() Mail {

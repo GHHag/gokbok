@@ -2,7 +2,7 @@ package main
 
 import (
 	"database/sql"
-	"final_project/data"
+	"email_service/data"
 	"log"
 	"sync"
 

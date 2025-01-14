@@ -1,4 +1,4 @@
-BINARY_NAME=myapp
+BINARY_NAME=email_service
 DSN="host=localhost port=5400 user=postgres password=password dbname=concurrency sslmode=disable timezone=UTC connect_timeout=5"
 REDIS="127.0.0.1:6379"
 
